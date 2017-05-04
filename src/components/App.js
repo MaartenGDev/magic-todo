@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Header from './common/Header';
-
+import Container from './common/Container';
 import About from './about/AboutPage';
 import Todo from './todo/TodoPage';
 import Docs from './docs/DocsPage';
@@ -22,12 +22,11 @@ class App extends Component {
           <main className="App">
             <Header />
 
-            <section>
-
+            <Container>
               <Route exact path="/about" component={About} />
               <Route exact path="/todo" component={Todo} />
               <Route exact path="/docs" component={Docs} />
-            </section>
+            </Container>
           </main>
         </Router>
       </MuiThemeProvider>
