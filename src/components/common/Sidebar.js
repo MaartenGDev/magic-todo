@@ -1,30 +1,21 @@
 import React from 'react';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import NavigationItem from '../common/NavigationItem';
-
-const Sidebar = styled.nav`
-  height: 100vh;
-  width: 200px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  display: inline-block;
+const MenuLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  display: block;
 `;
 
-const NavigationList = styled.ul`
-    padding: 0;
-    margin: 0;
-`;
-
-export default () => {
+export default ({isOpen, toggleDrawer}) => {
     return (
-        <Sidebar>
-            <nav>
-                <NavigationList>
-                    <NavigationItem to={'/about'}>About</NavigationItem>
-                    <NavigationItem to={'/todo'}>Todo</NavigationItem>
-                    <NavigationItem to={'/docs'}>Docs</NavigationItem>
-                </NavigationList>
-            </nav>
-        </Sidebar>
+        <Drawer open={isOpen}>
+            <MenuItem onTouchTap={() => toggleDrawer()}><MenuLink to={'/about'}>About</MenuLink></MenuItem>
+            <MenuItem onTouchTap={() => toggleDrawer()}><MenuLink to={'/todo'}>Todo</MenuLink></MenuItem>
+            <MenuItem onTouchTap={() => toggleDrawer()}><MenuLink to={'/docs'}>Docs</MenuLink></MenuItem>
+        </Drawer>
     );
 }
