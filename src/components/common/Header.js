@@ -6,17 +6,17 @@ import SideBar from './Sidebar';
 export default class Header extends Component {
     state = {
         drawerIsOpen: false
-    }
+    };
 
     toggleDrawer = () => {
         this.setState({drawerIsOpen: !this.state.drawerIsOpen});
-    }
+    };
 
     render() {
         return (
             <nav>
                 <AppBar
-                    title="Title"
+                    title="Magic Todo"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap={this.toggleDrawer}
                 />
