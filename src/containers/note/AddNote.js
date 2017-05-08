@@ -1,32 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {addNote} from './../../actions/index';
+import {addNote} from './../../actions/noteActions';
+import Container from '../../components/common/Container';
 
 let AddNote = ({dispatch}) => {
-    let input;
+    let titleField;
+    let bodyField;
 
     return (
-        <section>
+        <Container>
+            <Link to="/notes">Back to notes</Link>
             <form onSubmit={e => {
                 e.preventDefault();
 
-                if (!input.value.trim()) {
+                const title = titleField.value;
+                const body = bodyField.value;
+
+                if (!title.trim() || !body.trim()) {
                     return;
                 }
 
-                dispatch(addNote(input.value));
-                input.value = '';
+                dispatch(addNote(title, body));
+                titleField.value = '';
+                bodyField.value = '';
             }}>
 
-                <input ref={node => {
-                    input = node
-                }}/>
+                <input ref={(input) => titleField = input} />
+                <input ref={(input) => bodyField = input} />
 
                 <button type="submit">
                     Add Todo
                 </button>
             </form>
-        </section>
+        </Container>
     );
 };
 

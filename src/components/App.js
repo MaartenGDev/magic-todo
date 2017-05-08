@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
     Route
@@ -10,7 +10,8 @@ import Container from './common/Container';
 import About from './about/AboutPage';
 import Todo from './todo/TodoPage';
 import Docs from './docs/DocsPage';
-import Notes from './../containers/note/AddNote';
+import Notes from '../containers/note/NotePage';
+import AddNote from '../containers/note/AddNote';
 
 injectTapEventPlugin();
 
@@ -22,12 +23,12 @@ class App extends Component {
                     <main className="App">
                         <Header />
 
-                        <Container>
-                            <Route exact path="/notes" component={Notes}/>
-                            <Route exact path="/todo" component={Todo}/>
-                            <Route exact path="/docs" component={Docs}/>
-                            <Route exact path="/about" component={About}/>
-                        </Container>
+
+                        <Route exact path="/notes" component={Notes} />
+                        <Route exact path="/notes/add" component={AddNote} />
+                        <Route exact path="/todo" component={Todo} />
+                        <Route exact path="/docs" component={Docs} />
+                        <Route exact path="/about" component={About} />
                     </main>
                 </Router>
             </MuiThemeProvider>
